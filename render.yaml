@@ -2,7 +2,7 @@ services:
   # Backend API
   - type: web
     name: digitalstore-api
-    env: docker
+    runtime: docker
     plan: free
     healthCheckPath: /api/products
     envVars:
@@ -17,9 +17,8 @@ services:
       - key: Jwt__Audience
         value: DigitalStore.Client
 
-# Frontend Static Site (Dùng dấu gạch dưới: static_sites)
-static_sites:
-  - name: digitalstore-web
-    env: static
-    buildCommand: "" 
-    publishDir: src/DigitalStore.Client
+  # Frontend Static Site (Theo chuẩn Blueprint mới nhất)
+  - type: web
+    name: digitalstore-web
+    runtime: static
+    staticPublishPath: src/DigitalStore.Client
