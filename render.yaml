@@ -4,7 +4,7 @@ services:
     name: digitalstore-api
     runtime: docker
     plan: free
-    healthCheckPath: /api/products
+    healthCheckPath: /health
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
