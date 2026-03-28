@@ -9,7 +9,7 @@ services:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
       - key: ConnectionStrings__DefaultConnection
-        sync: false
+        value: postgresql://postgres:%40Congthanhx1@db.gdoaxftrniznvhrtaxnr.supabase.co:5432/postgres
       - key: Jwt__SecretKey
         generateValue: true
       - key: Jwt__Issuer
@@ -17,7 +17,7 @@ services:
       - key: Jwt__Audience
         value: DigitalStore.Client
 
-  # Frontend Static Site (Theo chuẩn Blueprint mới nhất)
+  # Frontend Static Site
   - type: web
     name: digitalstore-web
     runtime: static
