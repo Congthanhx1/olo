@@ -9,16 +9,17 @@ services:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
       - key: ConnectionStrings__DefaultConnection
-        sync: false # User enters this in Render UI once
+        sync: false
       - key: Jwt__SecretKey
-        generateValue: true # Render generates a random key automatically!
+        generateValue: true
       - key: Jwt__Issuer
         value: DigitalStore.API
       - key: Jwt__Audience
         value: DigitalStore.Client
 
-  # Frontend Static Site
-  - type: static_site
-    name: digitalstore-web
-    buildCommand: "" # No build needed for static HTML
-    publishDir: src/DigitalStore.Client # Thư mục chứa file HTML/JS của bạn
+# Frontend Static Site (Tách riêng ra mục này)
+staticSites:
+  - name: digitalstore-web
+    env: static
+    buildCommand: "" 
+    publishDir: src/DigitalStore.Client
