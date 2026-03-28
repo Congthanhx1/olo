@@ -18,9 +18,7 @@ services:
         value: DigitalStore.Client
 
   # Frontend Static Site
-  - type: web
+  - type: static_site
     name: digitalstore-web
-    env: static
-    plan: free
     buildCommand: "" # No build needed for static HTML
-    publishDir: src/DigitalStore.Client # Path where we will move the frontend
+    publishDir: src/DigitalStore.Client # Thư mục chứa file HTML/JS của bạn
