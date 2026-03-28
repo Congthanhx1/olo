@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalStore — Chuyên gia Giải pháp Phần mềm & Khóa học</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#a855f7',
+                        dark: '#0f172a',
+                        'dark-soft': '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark text-slate-200 min-h-screen overflow-x-hidden selection:bg-primary selection:text-white">
+
+    <!-- Ambient Background -->
+    <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5 backdrop-blur-md" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+                    <span class="text-white font-bold text-xl">D</span>
+                </div>
+                <span class="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">DigitalStore</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#" class="hover:text-primary transition-colors">Công cụ</a>
+                <a href="#" class="hover:text-primary transition-colors">Khóa học</a>
+                <a href="#" class="hover:text-primary transition-colors">Về chúng tôi</a>
+                <button onclick="toggleAuthModal()" class="px-6 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all flex items-center gap-2">
+                    <span id="nav-user-name">Đăng nhập</span>
+                </button>
+            </div>
+            
+            <button class="md:hidden text-2xl">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold tracking-wide uppercase animate-bounce-slow">
+                ✨ Nâng tầm hiệu suất công việc
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+                Kho Sim & Giải Pháp <br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-pink-500">Phần Mềm Đỉnh Cao</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Cung cấp các Add-in AutoCAD, Revit, script automation và các khóa học video chất lượng cao giúp bạn làm việc nhanh gấp 10 lần.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <a href="#products" class="px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl transition-all shadow-xl shadow-primary/30 flex items-center gap-2">
+                    Khám phá ngay
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+                <a href="#" class="px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold rounded-2xl transition-all backdrop-blur-sm">
+                    Xem demo video
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section id="products" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">Sản phẩm nổi bật</h2>
+                    <p class="text-slate-400">Những công cụ và kiến thức được tin dùng nhiều nhất</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    </button>
+                    <button class="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-container">
+                <!-- Product Card Mockup -->
+                <div class="group bg-dark-soft/50 border border-white/5 rounded-3xl p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 relative overflow-hidden flex flex-col h-full">
+                    <div class="absolute -top-10 -right-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
+                    
+                    <div class="relative mb-6 rounded-2xl overflow-hidden aspect-video bg-slate-800 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Tool" class="object-cover w-full h-full opacity-80 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-primary/20 backdrop-blur-md border border-primary/30 rounded-full text-xs font-bold text-primary">TOOL</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">AutoCAD Advanced Layer Manager</h3>
+                    <p class="text-slate-400 text-sm mb-6 flex-grow">Optimized DLL and scripts for AutoCAD, managing thousands of layers with one click. Supports AutoCAD 2020-2025.</p>
+                    
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-2xl font-bold text-white">499.000đ</span>
+                        <button class="px-6 py-3 bg-white text-dark font-bold rounded-xl hover:bg-primary hover:text-white transition-all">
+                            Chi tiết
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="group bg-dark-soft/50 border border-white/5 rounded-3xl p-6 hover:border-secondary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-secondary/10 relative overflow-hidden flex flex-col h-full">
+                    <div class="relative mb-6 rounded-2xl overflow-hidden aspect-video bg-slate-800 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80" alt="Course" class="object-cover w-full h-full opacity-80 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-secondary/20 backdrop-blur-md border border-secondary/30 rounded-full text-xs font-bold text-secondary">COURSE</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">Mastering C# for CAD Automation</h3>
+                    <p class="text-slate-400 text-sm mb-6 flex-grow">Khóa học từ A-Z hướng dẫn bạn cách tự viết các Add-in cho AutoCAD và Revit bằng C# ASP.NET Core.</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-2xl font-bold text-white">1.290.000đ</span>
+                        <button class="px-6 py-3 bg-white text-dark font-bold rounded-xl hover:bg-secondary hover:text-white transition-all">
+                            Chi tiết
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <span class="text-xl font-bold text-white">DigitalStore</span>
+                <p class="text-slate-500 text-sm mt-2">© 2026 DigitalStore. All rights reserved.</p>
+            </div>
+            <div class="flex gap-6 text-slate-400 text-sm">
+                <a href="#" class="hover:text-white transition-colors">Chính sách bảo mật</a>
+                <a href="#" class="hover:text-white transition-colors">Điều khoản dịch vụ</a>
+                <a href="#" class="hover:text-white transition-colors">Liên hệ hệ trợ</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal Overlay -->
+    <div id="auth-modal" class="fixed inset-0 z-[100] bg-dark/80 backdrop-blur-sm flex items-center justify-center p-6 hidden">
+        <div class="bg-dark-soft border border-white/10 w-full max-w-md rounded-[32px] p-8 relative shadow-2xl">
+            <button onclick="toggleAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white">✕</button>
+            <h2 class="text-3xl font-bold mb-2">Đăng nhập</h2>
+            <p class="text-slate-400 mb-8">Truy cập vào kho tài nguyên của bạn</p>
+            
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-slate-300">Email</label>
+                    <input type="email" id="login-email" class="w-full px-5 py-4 bg-dark border border-white/10 rounded-2xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600" placeholder="your@email.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-slate-300">Mật khẩu</label>
+                    <input type="password" id="login-password" class="w-full px-5 py-4 bg-dark border border-white/10 rounded-2xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600" placeholder="••••••••">
+                </div>
+                <button type="submit" class="w-full py-4 bg-primary text-white font-bold rounded-2xl hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+                    Bắt đầu làm việc
+                </button>
+            </form>
+            <p class="mt-6 text-center text-slate-400 text-sm">Chưa có tài khoản? <a href="#" class="text-primary hover:underline font-semibold">Đăng ký ngay</a></p>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="fixed inset-0 z-[100] bg-dark/90 backdrop-blur-md flex items-center justify-center p-6 hidden">
+        <div class="bg-dark-soft border border-white/10 w-full max-w-4xl rounded-[40px] overflow-hidden flex flex-col md:flex-row shadow-3xl">
+            <div class="w-full md:w-1/2 bg-slate-800">
+                <img id="modal-img" src="" class="w-full h-full object-cover">
+            </div>
+            <div class="w-full md:w-1/2 p-10 flex flex-col relative">
+                <button onclick="toggleProductModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white">✕</button>
+                <div id="modal-badge" class="mb-4"></div>
+                <h2 id="modal-title" class="text-3xl font-bold mb-4"></h2>
+                <p id="modal-desc" class="text-slate-400 leading-relaxed mb-8 flex-grow"></p>
+                
+                <div class="flex items-center justify-between py-6 border-t border-white/10">
+                    <div>
+                        <p class="text-slate-500 text-xs uppercase tracking-widest mb-1">Giá sở hữu</p>
+                        <p id="modal-price" class="text-4xl font-bold text-white"></p>
+                    </div>
+                </div>
+
+                <!-- Access Section -->
+                <div id="access-section" class="mt-4">
+                    <!-- Dynamic content: Buy/Download button -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

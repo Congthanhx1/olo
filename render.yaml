@@ -1,0 +1,26 @@
+services:
+  # Backend API
+  - type: web
+    name: digitalstore-api
+    env: docker
+    plan: free
+    healthCheckPath: /api/products
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__DefaultConnection
+        sync: false # User enters this in Render UI once
+      - key: Jwt__SecretKey
+        generateValue: true # Render generates a random key automatically!
+      - key: Jwt__Issuer
+        value: DigitalStore.API
+      - key: Jwt__Audience
+        value: DigitalStore.Client
+
+  # Frontend Static Site
+  - type: web
+    name: digitalstore-web
+    env: static
+    plan: free
+    buildCommand: "" # No build needed for static HTML
+    publishPath: src/DigitalStore.Client # Path where we will move the frontend
