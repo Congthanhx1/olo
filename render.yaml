@@ -23,4 +23,4 @@ services:
     env: static
     plan: free
     buildCommand: "" # No build needed for static HTML
-    publishPath: src/DigitalStore.Client # Path where we will move the frontend
+    publishDir: src/DigitalStore.Client # Path where we will move the frontend
