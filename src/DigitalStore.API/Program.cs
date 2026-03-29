@@ -65,21 +65,22 @@ app.MapControllers();
 app.MapGet("/", () => "DigitalStore API is running!");
 app.MapGet("/health", () => Results.Ok(new { status = "healthy" }));
 
-// ── DB Migration (chạy background, không block startup) ──
-_ = Task.Run(async () =>
+// ── DB Init với retry ────────────────────────────────────
+for (int i = 0; i < 3; i++)
 {
     try
     {
-        await Task.Delay(2000); // Đợi app start xong
         using var scope = app.Services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<DigitalStore.Infrastructure.Data.AppDbContext>();
         await context.Database.EnsureCreatedAsync();
         Console.WriteLine("✅ Database initialized successfully.");
+        break;
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"⚠️ Database initialization failed: {ex.Message}");
+        Console.WriteLine($"⚠️ DB init attempt {i + 1} failed: {ex.Message}");
+        if (i < 2) await Task.Delay(3000);
     }
-});
+}
 
 app.Run();
