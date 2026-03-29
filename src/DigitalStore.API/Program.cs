@@ -62,11 +62,24 @@ app.UseCors("AllowFrontend");
 app.UseAuthentication();   // ← Phải trước UseAuthorization
 app.UseAuthorization();
 app.MapControllers();
+app.MapGet("/", () => "DigitalStore API is running!");
+app.MapGet("/health", () => Results.Ok(new { status = "healthy" }));
 
-using (var scope = app.Services.CreateScope())
+// ── DB Migration (chạy background, không block startup) ──
+_ = Task.Run(async () =>
 {
-    var context = scope.ServiceProvider.GetRequiredService<DigitalStore.Infrastructure.Data.AppDbContext>();
-    await context.Database.EnsureCreatedAsync();
-}
+    try
+    {
+        await Task.Delay(2000); // Đợi app start xong
+        using var scope = app.Services.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<DigitalStore.Infrastructure.Data.AppDbContext>();
+        await context.Database.EnsureCreatedAsync();
+        Console.WriteLine("✅ Database initialized successfully.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"⚠️ Database initialization failed: {ex.Message}");
+    }
+});
 
 app.Run();
